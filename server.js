@@ -79,9 +79,10 @@ const server = app.listen(PORT, () => console.log(`listening on port ${PORT}`));
 const io = new Server(server);
 const historicoMessages = [];
 
+// Configuración Websocket
 io.on("connection", (socket) => {
   console.log("nuevo usuario conectado", socket.id);
-  socket.broadcast.emit("newUser", "alguien más se conectó");
+  socket.broadcast.emit("newUser");
   socket.emit("historico", historicoMessages);
   socket.on("message", (data) => {
     console.log(data);

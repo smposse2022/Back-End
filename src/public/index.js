@@ -3,6 +3,7 @@ console.log("javaSript funcionando");
 socketClient = io();
 
 let user;
+// Captura el valor del usuario
 Swal.fire({
   title: "Hola usuario",
   text: "Bienvenido, ingresa tu usuario",
@@ -11,9 +12,6 @@ Swal.fire({
 }).then((response) => (user = response.value));
 
 const campo = document.getElementById("messageField");
-
-const prueba = document.getElementById("prueba");
-prueba.innerHTML = `<p>Hola </p>`;
 
 campo.addEventListener("keydown", (event) => {
   console.log(event.key);
