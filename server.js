@@ -61,6 +61,9 @@ const handlebars = require("express-handlebars");
 const path = require("path");
 const { Server } = require("socket.io");
 const PORT = process.env.PORT || 8080;
+const Contenedor = require("./products");
+
+const listaProductos = new Contenedor("Productos.txt");
 
 // Crear el servidor
 const app = express();
@@ -80,14 +83,16 @@ const io = new Server(server);
 const historicoMessages = [];
 
 // Configuración Websocket
-io.on("connection", (socket) => {
+io.on("connection", async (socket) => {
   console.log("nuevo usuario conectado", socket.id);
+  // enviar todos los productos al usuario al conectarse
+  socket.emit("products", await listaProductos.getAll());
   socket.broadcast.emit("newUser");
   socket.emit("historico", historicoMessages);
   socket.on("message", (data) => {
     console.log(data);
-    historicoMessages.push(data);
-    io.sockets.emit("historico", historicoMessages);
+    historicoMessages.push(data); // o chatContainer.save - creando la clase
+    io.sockets.emit("historico", historicoMessages); // // o chatContainer.getAll - creando la clase
   });
 });
 

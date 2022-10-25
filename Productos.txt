@@ -16,5 +16,17 @@
     "title": "Remera Negra Lisa",
     "price": 4500,
     "thumbnail": "https://d3ugyf2ht6aenh.cloudfront.net/stores/111/097/products/_mg_16781-feb955b3b16b4a32a016577495798656-1024-1024.jpg"
+  },
+  {
+    "id": 4,
+    "title": "",
+    "price": "",
+    "thumbnail": ""
+  },
+  {
+    "id": 5,
+    "title": "",
+    "price": "",
+    "thumbnail": ""
   }
 ]

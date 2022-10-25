@@ -11,6 +11,7 @@ Swal.fire({
   allowOutsideClick: false,
 }).then((response) => (user = response.value));
 
+// Lógica del Chat
 const campo = document.getElementById("messageField");
 
 campo.addEventListener("keydown", (event) => {
@@ -20,11 +21,12 @@ campo.addEventListener("keydown", (event) => {
       userName: user,
       message: campo.value,
     });
+    campo.value = "";
   }
 });
 
+// mostrar todos los mensajes cuando el usuario carga la página
 const messageContainer = document.getElementById("messageContainer");
-
 socketClient.on("historico", (data) => {
   let elements = "";
   data.forEach((el) => {
