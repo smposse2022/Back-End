@@ -1,4 +1,3 @@
-const fs = require("fs");
 const express = require("express");
 const Contenedor = require("../products");
 const productsRouter = express.Router();

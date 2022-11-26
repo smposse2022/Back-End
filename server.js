@@ -1,65 +1,8 @@
-/*class Usuario {
-  constructor(nombre, apellido, libros, mascotas) {
-    this.nombre = nombre;
-    this.apellido = apellido;
-    this.libros = libros;
-    this.mascotas = mascotas;
-  }
-  // Métodos
-  getFullName() {
-    // Lo muestro por pantalla
-    console.log(`${this.nombre} ${this.apellido}`);
-  }
-  addMascota(String) {
-    this.mascotas.push(String);
-  }
-  countMascotas() {
-    // Lo muestro por pantalla
-    console.log(this.mascotas.length);
-  }
-  addBook(StringNombre, StringAutor) {
-    this.libros.push({ nombre: StringNombre, autor: StringAutor });
-  }
-  getBookNames() {
-    // Lo muestro por pantalla
-    console.log(this.libros.map((libro) => libro.nombre));
-  }
-}
-
-const usuario1 = new Usuario(
-  "Juan",
-  "Ramirez",
-  [
-    { nombre: "El psicoanalista", autor: "John Katzenbach" },
-    { nombre: "El hechizo del agua", autor: "Florencia Bonelli" },
-    { nombre: "Rota se camina igual", autor: "Lorena Pronsky" },
-  ],
-  ["Mila", "Harry"]
-);
-console.log(usuario1);
-const usuario2 = new Usuario(
-  "Mariana",
-  "Bermudez",
-  [
-    { nombre: "Reseta tus intestinos", autor: "Facundo Pereyra" },
-    { nombre: "Personas Decentes", autor: "Leonardo Padura" },
-  ],
-  ["Bartolo", "Scooby", "Jaime"]
-);
-usuario1.getFullName();
-usuario1.addMascota("Pablo");
-usuario1.countMascotas();
-usuario1.addBook("Padre rico padre pobre", "Robert Kiyosaki");
-usuario1.getBookNames();
-*/
-
-// async-await crea una función para poder trabajar con operaciones asíncronas, y poder manipular las respuestas de las Promesas también
-const fs = require("fs");
 const express = require("express");
-const productRouter = require("./routes/productsRouter");
+const productRouter = require("./routes/productsRouter.js");
 const handlebars = require("express-handlebars");
 const path = require("path");
-const { Server } = require("socket.io");
+//const { Server } = require("socket.io");
 const PORT = process.env.PORT || 8080;
 const Contenedor = require("./products");
 
@@ -79,11 +22,11 @@ app.use("/api", productRouter); // Asocio una ruta principal con todas las rutas
 const server = app.listen(PORT, () => console.log(`listening on port ${PORT}`));
 
 // Servidor de Websocket y lo conectamos con nuestro servidor de express
-const io = new Server(server);
-const historicoMessages = [];
+//const io = new Server(server);
+//const historicoMessages = [];
 
 // Configuración Websocket
-io.on("connection", async (socket) => {
+/*io.on("connection", async (socket) => {
   console.log("nuevo usuario conectado", socket.id);
   // enviar todos los productos al usuario al conectarse
   socket.emit("products", await listaProductos.getAll());
@@ -94,7 +37,7 @@ io.on("connection", async (socket) => {
     historicoMessages.push(data); // o chatContainer.save - creando la clase
     io.sockets.emit("historico", historicoMessages); // // o chatContainer.getAll - creando la clase
   });
-});
+});*/
 
 // HandleBars
 const folderViews = path.join(__dirname, "views");
